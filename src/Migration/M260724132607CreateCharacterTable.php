@@ -8,11 +8,11 @@ use Yiisoft\Db\Constant\ReferentialAction;
 use Yiisoft\Db\Migration\MigrationBuilder;
 use Yiisoft\Db\Migration\RevertibleMigrationInterface;
 
-final class M260724132607CreateClassTable implements RevertibleMigrationInterface
+final class M260724132607CreateCharacterTable implements RevertibleMigrationInterface
 {
-    private string $tableName = '{{%class}}';
+    private string $tableName = '{{%character}}';
     private string $referenceGameTable = '{{%game}}';
-    private string $gameRelationName = 'fk_class_game_id_game';
+    private string $gameRelationName = 'fk_character_game_id_game';
 
     public function up(MigrationBuilder $b): void
     {

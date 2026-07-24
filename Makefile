@@ -70,8 +70,8 @@ yii: ## Execute Yii command.
 .PHONY: yii
 endif
 
-ifeq ($(PRIMARY_GOAL),active-record)
-active-record: ## Create an Active-record model with Gii.
+ifeq ($(PRIMARY_GOAL),ar)
+ar: ## Create an Active-record model with Gii.
 	$(DOCKER_COMPOSE_DEV) run --rm app ./yii gii:active-record $(CLI_ARGS)
 .PHONY: yii
 endif

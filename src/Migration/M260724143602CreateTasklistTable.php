@@ -16,7 +16,7 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
     private string $tableName = '{{%tasklist}}';
     private string $referenceUserTable = '{{%user}}';
     private string $referenceGameTable = '{{%game}}';
-    private string $referenceClassTable = '{{%class}}';
+    private string $referenceCharacterTable = '{{%character}}';
     private string $referenceTargetTable = '{{%target}}';
     private string $referenceStatTable = '{{%stat}}';
 
@@ -24,7 +24,7 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
 
     private string $UserRelationName = 'fk_tasklist_user_id_user';
     private string $GameRelationName = 'fk_tasklist_game_id_game';
-    private string $ClassRelationName = 'fk_tasklist_class_id_class';
+    private string $CharacterRelationName = 'fk_tasklist_character_id_character';
     private string $TargetRelationName = 'fk_tasklist_target_id_target';
     private string $StatRelationName = 'fk_tasklist_stat_id_stat';
 
@@ -40,7 +40,7 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
             'difficulty' => $cb::tinyint()->notNull()->defaultValue(TasklistDifficultyEnum::EASY->value),
             'visibility' => $cb::tinyint()->notNull()->defaultValue(TasklistVisibilityEnum::PUBLIC->value),
             'is_ordered' => $cb::boolean()->notNull()->defaultValue(false),
-            'class_id' => $cb::uuid(),
+            'character_id' => $cb::uuid(),
             'target_id' => $cb::uuid(),
             'stat_id' => $cb::uuid(),
             'created_at' => $cb::integer()->notNull(),
@@ -77,12 +77,12 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
             ReferentialAction::NO_ACTION,
         );
 
-        // Class foreign key
+        // Character foreign key
         $b->addForeignKey(
             $this->tableName,
-            $this->ClassRelationName,
-            'class_id',
-            $this->referenceClassTable,
+            $this->CharacterRelationName,
+            'character_id',
+            $this->referenceCharacterTable,
             'id',
             ReferentialAction::SET_NULL,
             ReferentialAction::NO_ACTION
@@ -117,7 +117,7 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
 
         $b->dropForeignKey($this->tableName, $this->StatRelationName);
         $b->dropForeignKey($this->tableName, $this->TargetRelationName);
-        $b->dropForeignKey($this->tableName, $this->ClassRelationName);
+        $b->dropForeignKey($this->tableName, $this->CharacterRelationName);
         $b->dropForeignKey($this->tableName, $this->GameRelationName);
         $b->dropForeignKey($this->tableName, $this->UserRelationName);
 
