@@ -43,8 +43,8 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
             'character_id' => $cb::uuid(),
             'target_id' => $cb::uuid(),
             'stat_id' => $cb::uuid(),
-            'created_at' => $cb::integer()->notNull(),
-            'updated_at' => $cb::integer()->notNull(),
+            'created_at' => $cb::datetime()->notNull(),
+            'updated_at' => $cb::datetime()->notNull(),
         ]);
 
         // Unique index for user_id, slug and title

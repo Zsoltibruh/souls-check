@@ -11,7 +11,7 @@ use Yiisoft\Auth\IdentityInterface;
 
 final readonly class UserIdentity implements IdentityInterface
 {
-    public function __construct(private User $user, private AuthKeyGenerator $authKeyGenerator) {}
+    public function __construct(public User $user, private AuthKeyGenerator $authKeyGenerator) {}
 
     #[Override]
     public function getId(): ?string

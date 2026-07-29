@@ -26,7 +26,7 @@ final class M260724164600CreateUserSavedTaskProgressTable implements RevertibleM
             'user_id' => $cb::uuid()->notNull(),
             'task_id' => $cb::uuid()->notNull(),
             'is_completed' => $cb::boolean()->notNull()->defaultValue(false),
-            'completed_at' => $cb::integer(),
+            'completed_at' => $cb::datetime(),
             'PRIMARY KEY([[user_id]], [[task_id]])',
         ]);
 

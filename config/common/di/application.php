@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Presentation\ResponseFactory\ExceptionResponderFactory;
 use App\Presentation\ResponseFactory\NotFoundMiddleware;
 use App\Shared\ApplicationParams;
+use Psr\Container\ContainerInterface;
 use Yiisoft\Csrf\CsrfTokenMiddleware;
 use Yiisoft\Definitions\DynamicReference;
 use Yiisoft\Definitions\Reference;
@@ -16,6 +17,8 @@ use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;
 use Yiisoft\Middleware\Dispatcher\ParametersResolverInterface;
 use Yiisoft\Router\Middleware\Router;
 use Yiisoft\Session\SessionMiddleware;
+use Yiisoft\Validator\RuleHandlerResolver\RuleHandlerContainer;
+use Yiisoft\Validator\RuleHandlerResolverInterface;
 use Yiisoft\Yii\Http\Application;
 
 /** @var array $params */
@@ -54,4 +57,6 @@ return [
             Reference::to(RequestInputParametersResolver::class),
         ],
     ],
+
+    RuleHandlerResolverInterface::class => static fn(ContainerInterface $container) => new RuleHandlerContainer($container),
 ];

@@ -17,4 +17,19 @@ final readonly class UrlGenerator
     {
         return $this->generate('home');
     }
+
+    public function signup(): string
+    {
+        return $this->generate('signup');
+    }
+
+    public function login(): string
+    {
+        return $this->generate('login');
+    }
+
+    public function logout(): string
+    {
+        return $this->generate('logout');
+    }
 }

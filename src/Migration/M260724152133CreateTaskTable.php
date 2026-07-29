@@ -33,8 +33,8 @@ final class M260724152133CreateTaskTable implements RevertibleMigrationInterface
             'target' => $cb::uuid()->notNull(),
             'required_weapon' => $cb::uuid(),
             'required_spell' => $cb::uuid(),
-            'created_at' => $cb::integer()->notNull(),
-            'updated_at' => $cb::integer()->notNull()
+            'created_at' => $cb::datetime()->notNull(),
+            'updated_at' => $cb::datetime()->notNull()
         ]);
 
         // Unique index for tasklist_id and target

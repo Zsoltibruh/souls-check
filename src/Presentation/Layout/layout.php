@@ -3,7 +3,10 @@
 declare(strict_types=1);
 
 use App\Presentation\Layout\MainAsset;
+use App\Shared\UrlGenerator;
 use Yiisoft\Html\Html;
+use Yiisoft\User\CurrentUser;
+use Yiisoft\Yii\View\Renderer\Csrf;
 
 /**
  * @var \App\Shared\ApplicationParams $applicationParams
@@ -13,7 +16,9 @@ use Yiisoft\Html\Html;
  * @var string|null $csrf
  * @var Yiisoft\View\WebView $this
  * @var Yiisoft\Router\CurrentRoute $currentRoute
- * @var Yiisoft\Router\UrlGeneratorInterface $urlGenerator
+ * @var UrlGenerator $urlGenerator
+ * @var CurrentUser $currentUser
+ * @var Csrf $csrf
  */
 
 $assetManager->register(MainAsset::class);
@@ -69,6 +74,18 @@ $this->beginPage()
                 </g>
             </svg>
         </a>
+        <div>
+            <?php if ($currentUser->isGuest()): ?>
+                <?= Html::a('Sign up', $urlGenerator->signup()) ?>
+                <?= Html::a('Login', $urlGenerator->login()) ?>
+            <?php else: ?>
+                <form action="<?= Html::encodeAttribute($urlGenerator->logout()) ?>" method="post">
+                    <?= $csrf->hiddenInput() ?>
+                    <button type="submit">Logout</button>
+                </form>
+                <?= $currentUser->getIdentity()->user->getUsername() ?>
+            <?php endif; ?>
+        </div>
     </div>
 
     <div class="content">

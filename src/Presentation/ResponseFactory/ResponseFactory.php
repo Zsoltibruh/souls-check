@@ -46,4 +46,9 @@ final readonly class ResponseFactory implements ResponseFactoryInterface
             ->render(__DIR__ . '/access-denied.php')
             ->withStatus(Status::FORBIDDEN);
     }
+
+    public function render(string $view, array $parameters, string $layout = Layout::MAIN): ResponseInterface
+    {
+        return $this->viewRenderer->withLayout($layout)->render($view, $parameters);
+    }
 }

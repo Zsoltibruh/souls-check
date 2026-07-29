@@ -7,13 +7,15 @@ namespace App\Domain\User;
 use App\Domain\Tasklist\Tasklist;
 use App\Domain\UserSavedTasklist\UserSavedTasklist;
 use App\Domain\UserSavedTaskProgress\UserSavedTaskProgress;
+use Override;
 use Yiisoft\ActiveRecord\ActiveRecord;
 use Yiisoft\ActiveRecord\ActiveQueryInterface;
 
 final class User extends ActiveRecord
 {
-    public const MIN_PASSWORD_LENGTH = 8;
     public const MAX_PASSWORD_LENGTH = 96;
+    public const MIN_PASSWORD_LENGTH = 8;
+
     public const MIN_USERNAME_LENGTH = 3;
 
     protected string $id;
@@ -22,8 +24,8 @@ final class User extends ActiveRecord
     protected string $password_hash;
     protected UserStatus $status = UserStatus::ACTIVE;
     protected string $auth_key;
-    protected int $created_at;
-    protected int $updated_at;
+    protected \DateTimeImmutable $created_at;
+    protected \DateTimeImmutable $updated_at;
 
     public function tableName(): string
     {
@@ -89,23 +91,22 @@ final class User extends ActiveRecord
     {
         $this->auth_key = $auth_key;
     }
-
-    public function getCreatedAt(): ?int
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at ?? null;
     }
 
-    public function setCreatedAt(int $created_at): void
+    public function setCreatedAt(\DateTimeImmutable $created_at): void
     {
         $this->created_at = $created_at;
     }
 
-    public function getUpdatedAt(): ?int
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updated_at ?? null;
     }
 
-    public function setUpdatedAt(int $updated_at): void
+    public function setUpdatedAt(\DateTimeImmutable $updated_at): void
     {
         $this->updated_at = $updated_at;
     }
@@ -148,5 +149,17 @@ final class User extends ActiveRecord
     public function getUserSavedTasklistsQuery(): ActiveQueryInterface
     {
         return $this->hasMany(UserSavedTasklist::class, ['user_id' => 'id'])->inverseOf('user');
+    }
+
+    #[Override]
+    protected function populateProperty(string $name, mixed $value): void
+    {
+        switch ($name) {
+            case 'status':
+                $this->status = UserStatus::from((int) $value);
+                break;
+            default:
+                parent::populateProperty($name, $value);
+        }
     }
 }

@@ -20,9 +20,9 @@ final class M260722213743CreateUserTable implements RevertibleMigrationInterface
             'email' => $cb::string()->unique()->notNull(),
             'password_hash' => $cb::string()->notNull(),
             'status' => $cb::tinyint()->notNull(),
-            'auth_key' => $cb::string(64)->notNull(),
-            'created_at' => $cb::integer()->notNull(),
-            'updated_at' => $cb::integer()->notNull()
+            'auth_key' => $cb::string(75)->notNull(),
+            'created_at' => $cb::datetime()->notNull(),
+            'updated_at' => $cb::datetime()->notNull()
         ]);
     }
 

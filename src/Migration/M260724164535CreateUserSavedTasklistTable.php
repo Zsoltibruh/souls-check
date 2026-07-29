@@ -26,7 +26,7 @@ final class M260724164535CreateUserSavedTasklistTable implements RevertibleMigra
             'user_id' => $cb::uuid()->notNull(),
             'tasklist_id' => $cb::uuid()->notNull(),
             'is_completed' => $cb::boolean()->notNull()->defaultValue(false),
-            'created_at' => $cb::integer()->notNull(),
+            'created_at' => $cb::datetime()->notNull(),
             'PRIMARY KEY([[user_id]], [[tasklist_id]])',
         ]);
 
