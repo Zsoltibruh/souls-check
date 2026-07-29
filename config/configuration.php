@@ -10,7 +10,6 @@ return [
         'params' => 'common/params.php',
         'params-web' => [
             '$params',
-            'web/params.php',
         ],
         'params-console' => [
             '$params',
@@ -19,7 +18,6 @@ return [
         'di' => 'common/di/*.php',
         'di-web' => [
             '$di',
-            'web/di/*.php',
         ],
         'di-console' => '$di',
         'di-delegates' => [],

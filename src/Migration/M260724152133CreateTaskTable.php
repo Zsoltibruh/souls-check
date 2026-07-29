@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Migration;
 
-use App\Domain\Task\TaskTypeEnum;
+use App\Domain\Task\TaskType;
 use Yiisoft\Db\Constant\IndexType;
 use Yiisoft\Db\Constant\ReferentialAction;
 use Yiisoft\Db\Migration\MigrationBuilder;

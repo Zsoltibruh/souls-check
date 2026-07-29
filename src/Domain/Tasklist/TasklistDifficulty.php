@@ -2,11 +2,11 @@
 
 namespace App\Domain\Tasklist;
 
-use App\Domain\Shared\Trait\LabelTrait;
+use App\Domain\Shared\Trait\HasLabel;
 
-enum TasklistDifficultyEnum: int
+enum TasklistDifficulty: int
 {
-    use LabelTrait;
+    use HasLabel;
 
     case EASY = 1;
     case NORMAL = 2;

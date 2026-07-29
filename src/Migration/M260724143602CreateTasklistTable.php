@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Migration;
 
-use App\Domain\Tasklist\TasklistDifficultyEnum;
-use App\Domain\Tasklist\TasklistVisibilityEnum;
+use App\Domain\Tasklist\TasklistDifficulty;
+use App\Domain\Tasklist\TasklistVisibility;
 use Yiisoft\Db\Constant\IndexType;
 use Yiisoft\Db\Constant\ReferentialAction;
 use Yiisoft\Db\Migration\MigrationBuilder;
@@ -37,8 +37,8 @@ final class M260724143602CreateTasklistTable implements RevertibleMigrationInter
             'slug' => $cb::string()->notNull(),
             'user_id' => $cb::uuid()->notNull(),
             'game_id' => $cb::uuid()->notNull(),
-            'difficulty' => $cb::tinyint()->notNull()->defaultValue(TasklistDifficultyEnum::EASY->value),
-            'visibility' => $cb::tinyint()->notNull()->defaultValue(TasklistVisibilityEnum::PUBLIC->value),
+            'difficulty' => $cb::tinyint()->notNull()->defaultValue(TasklistDifficulty::EASY->value),
+            'visibility' => $cb::tinyint()->notNull()->defaultValue(TasklistVisibility::PUBLIC->value),
             'is_ordered' => $cb::boolean()->notNull()->defaultValue(false),
             'character_id' => $cb::uuid(),
             'target_id' => $cb::uuid(),

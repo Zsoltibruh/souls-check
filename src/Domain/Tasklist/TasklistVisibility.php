@@ -2,11 +2,11 @@
 
 namespace App\Domain\Tasklist;
 
-use App\Domain\Shared\Trait\LabelTrait;
+use App\Domain\Shared\Trait\HasLabel;
 
-enum TasklistVisibilityEnum: int
+enum TasklistVisibility: int
 {
-    use LabelTrait;
+    use HasLabel;
 
     case PUBLIC = 1;
     case LINK = 2;

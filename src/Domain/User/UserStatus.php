@@ -2,11 +2,11 @@
 
 namespace App\Domain\User;
 
-use App\Domain\Shared\Trait\LabelTrait;
+use App\Domain\Shared\Trait\HasLabel;
 
-enum UserStatusEnum: int
+enum UserStatus: int
 {
-    use LabelTrait;
+    use HasLabel;
 
     case INACTIVE = 0;
     case ACTIVE = 1;

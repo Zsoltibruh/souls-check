@@ -20,7 +20,7 @@ final class User extends ActiveRecord
     protected string $username;
     protected string $email;
     protected string $password_hash;
-    protected UserStatusEnum $status = UserStatusEnum::ACTIVE;
+    protected UserStatus $status = UserStatus::ACTIVE;
     protected string $auth_key;
     protected int $created_at;
     protected int $updated_at;
@@ -70,12 +70,12 @@ final class User extends ActiveRecord
         $this->password_hash = $password_hash;
     }
 
-    public function getStatus(): ?UserStatusEnum
+    public function getStatus(): ?UserStatus
     {
         return $this->status ?? null;
     }
 
-    public function setStatus(UserStatusEnum $status): void
+    public function setStatus(UserStatus $status): void
     {
         $this->status = $status;
     }

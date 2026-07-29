@@ -2,11 +2,11 @@
 
 namespace App\Domain\Task;
 
-use App\Domain\Shared\Trait\LabelTrait;
+use App\Domain\Shared\Trait\HasLabel;
 
-enum TaskTypeEnum: int
+enum TaskType: int
 {
-    use LabelTrait;
+    use HasLabel;
 
     case DEFEAT = 1;
     case COLLECT = 2;

@@ -2,11 +2,11 @@
 
 namespace App\Domain\Tag;
 
-use App\Domain\Shared\Trait\LabelTrait;
+use App\Domain\Shared\Trait\HasLabel;
 
-enum TagTypeEnum: int
+enum TagType: int
 {
-    use LabelTrait;
+    use HasLabel;
 
     case TASK = 1;
     case TASKLIST = 2;

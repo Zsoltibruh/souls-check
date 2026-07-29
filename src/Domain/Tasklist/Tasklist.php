@@ -22,8 +22,8 @@ final class Tasklist extends ActiveRecord
     protected string $slug;
     protected string $user_id;
     protected string $game_id;
-    protected TasklistDifficultyEnum $difficulty = TasklistDifficultyEnum::EASY;
-    protected TasklistVisibilityEnum $visibility = TasklistVisibilityEnum::PUBLIC;
+    protected TasklistDifficulty $difficulty = TasklistDifficulty::EASY;
+    protected TasklistVisibility $visibility = TasklistVisibility::PUBLIC;
     protected bool $is_ordered = false;
     protected ?string $character_id = null;
     protected ?string $target_id = null;
@@ -86,22 +86,22 @@ final class Tasklist extends ActiveRecord
         $this->set('game_id', $game_id);
     }
 
-    public function getDifficulty(): TasklistDifficultyEnum
+    public function getDifficulty(): TasklistDifficulty
     {
         return $this->difficulty;
     }
 
-    public function setDifficulty(TasklistDifficultyEnum $difficulty): void
+    public function setDifficulty(TasklistDifficulty $difficulty): void
     {
         $this->difficulty = $difficulty;
     }
 
-    public function getVisibility(): TasklistVisibilityEnum
+    public function getVisibility(): TasklistVisibility
     {
         return $this->visibility;
     }
 
-    public function setVisibility(TasklistVisibilityEnum $visibility): void
+    public function setVisibility(TasklistVisibility $visibility): void
     {
         $this->visibility = $visibility;
     }

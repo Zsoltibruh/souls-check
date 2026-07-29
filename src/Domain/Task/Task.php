@@ -15,7 +15,7 @@ final class Task extends ActiveRecord
 {
     protected string $id;
     protected string $tasklist_id;
-    protected TaskTypeEnum $type;
+    protected TaskType $type;
     protected string $target;
     protected ?string $required_weapon = null;
     protected ?string $required_spell = null;
@@ -47,12 +47,12 @@ final class Task extends ActiveRecord
         $this->set('tasklist_id', $tasklist_id);
     }
 
-    public function getType(): ?TaskTypeEnum
+    public function getType(): ?TaskType
     {
         return $this->type ?? null;
     }
 
-    public function setType(TaskTypeEnum $type): void
+    public function setType(TaskType $type): void
     {
         $this->type = $type;
     }

@@ -9,7 +9,7 @@ namespace App\Domain\Shared\Trait;
  * @property-read string|int $value
  * @method static array cases()
  */
-trait LabelTrait
+trait HasLabel
 {
     public function label(): string
     {

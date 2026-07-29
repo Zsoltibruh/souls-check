@@ -12,7 +12,7 @@ use Yiisoft\ActiveRecord\ActiveQueryInterface;
 final class Tag extends ActiveRecord
 {
     protected string $id;
-    protected TagTypeEnum $type;
+    protected TagType $type;
     protected string $name;
 
     public function tableName(): string
@@ -30,12 +30,12 @@ final class Tag extends ActiveRecord
         $this->set('id', $id);
     }
 
-    public function getType(): ?TagTypeEnum
+    public function getType(): ?TagType
     {
         return $this->type ?? null;
     }
 
-    public function setType(TagTypeEnum $type): void
+    public function setType(TagType $type): void
     {
         $this->type = $type;
     }
