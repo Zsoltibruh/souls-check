@@ -12,6 +12,7 @@ use App\Shared\UrlGenerator;
 use App\UseCase\Shared\HasForm;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Log\LoggerInterface;
 use Yiisoft\FormModel\FormHydrator;
 use Yiisoft\Security\PasswordHasher;
 use Yiisoft\User\CurrentUser;
@@ -29,6 +30,7 @@ final readonly class Action
         private CurrentUser $currentUser,
         private AuthKeyGenerator $authKeyGenerator,
         private PasswordHasher $passwordHasher,
+        private LoggerInterface $logger,
     ) {}
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
@@ -50,6 +52,8 @@ final readonly class Action
         }
 
         $response = $this->responseFactory->createResponse();
+
+        $this->logger->info("User '{$user->getUsername()}' logged in.", ['context' => __METHOD__]);
 
         return $this->responseFactory->redirect($this->urlGenerator->viewProfile($user->getId()), $response);
     }

@@ -8,6 +8,7 @@ use Yiisoft\ErrorHandler\ErrorHandler;
 use Yiisoft\ErrorHandler\Renderer\HtmlRenderer;
 use Yiisoft\Log\Logger;
 use Yiisoft\Log\StreamTarget;
+use Yiisoft\Log\Target\File\FileTarget;
 use Yiisoft\Yii\Runner\Http\HttpApplicationRunner;
 
 $root = dirname(__DIR__);
@@ -46,11 +47,12 @@ $runner = new HttpApplicationRunner(
     temporaryErrorHandler: new ErrorHandler(
         new Logger(
             [
-                (new StreamTarget())->setLevels([
-                    LogLevel::EMERGENCY,
-                    LogLevel::ERROR,
-                    LogLevel::WARNING,
-                ]),
+                (new FileTarget($root . '/runtime/logs/site.log'))
+                    ->setLevels([
+                        LogLevel::WARNING,
+                        LogLevel::ERROR,
+                        LogLevel::EMERGENCY,
+                    ]),
             ],
         ),
         new HtmlRenderer(),

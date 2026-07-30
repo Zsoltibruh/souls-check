@@ -1,0 +1,66 @@
+2026-07-30 16:46:05.234100 [info][application] User 'test' logged in.
+
+Message context:
+
+trace:
+    
+time: 1785429965.234099
+memory: 2340432
+category: 'application'
+context: 'App\\UseCase\\Login\\Action::__invoke'
+
+2026-07-30 16:46:44.554200 [info][application] User 'test' logged out.
+
+Message context:
+
+trace:
+    
+time: 1785430004.554203
+memory: 2252336
+category: 'application'
+context: 'App\\UseCase\\Logout\\Action::__invoke'
+
+2026-07-30 16:48:09.265700 [info][application] User 'test' logged in.
+
+Message context:
+
+trace:
+    
+time: 1785430089.265741
+memory: 2340416
+category: 'application'
+context: 'App\\UseCase\\Login\\Action::__invoke'
+
+2026-07-30 16:51:23.243300 [info][application] User 'test' logged out.
+
+Message context:
+
+trace:
+    
+time: 1785430283.243348
+memory: 2251496
+category: 'application'
+context: 'App\\UseCase\\Logout\\Action::__invoke'
+
+2026-07-30 16:54:41.595400 [info][application] User 'test' logged in.
+
+Message context:
+
+trace:
+    
+time: 1785430481.595376
+memory: 2340416
+category: 'application'
+context: 'App\\UseCase\\Login\\Action::__invoke'
+
+2026-07-30 16:55:00.237600 [info][application] User 'test' logged out.
+
+Message context:
+
+trace:
+    
+time: 1785430500.237582
+memory: 2251496
+category: 'application'
+context: 'App\\UseCase\\Logout\\Action::__invoke'
+
