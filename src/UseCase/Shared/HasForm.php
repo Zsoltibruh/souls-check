@@ -10,7 +10,10 @@ use Yiisoft\FormModel\FormModel;
 
 /**
  * If you use this trait in another class you still need to add ResponseFactory inside the constructor!
- * @property ResponseFactory $responseFactory
+ * 
+ * Add the renderForm method to the class, which renders the form given inside the $form variable.
+ * @property-read ResponseFactory $responseFactory
+ * @method ResponseInterface renderForm(FormModel $form, string $path)
  */
 trait HasForm
 {
