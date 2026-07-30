@@ -32,4 +32,9 @@ final readonly class UrlGenerator
     {
         return $this->generate('logout');
     }
+
+    public function viewProfile(string $id): string
+    {
+        return $this->generate('view-profile', ['id' => $id]);
+    }
 }

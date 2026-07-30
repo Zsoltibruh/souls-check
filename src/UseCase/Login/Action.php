@@ -51,7 +51,7 @@ final readonly class Action
 
         $response = $this->responseFactory->createResponse();
 
-        return $this->responseFactory->redirect($this->urlGenerator->home(), $response);
+        return $this->responseFactory->redirect($this->urlGenerator->viewProfile($user->getId()), $response);
     }
 
     private function checkUser(Form $form, ?User $user): bool

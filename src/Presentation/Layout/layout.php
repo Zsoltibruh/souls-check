@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Domain\User\User;
 use App\Presentation\Layout\MainAsset;
 use App\Shared\UrlGenerator;
 use Yiisoft\Html\Html;
@@ -19,7 +20,10 @@ use Yiisoft\Yii\View\Renderer\Csrf;
  * @var UrlGenerator $urlGenerator
  * @var CurrentUser $currentUser
  * @var Csrf $csrf
+ * @var User|null $user
  */
+
+$user = $currentUser->isGuest() ? null : $currentUser->getIdentity()->user;
 
 $assetManager->register(MainAsset::class);
 
@@ -83,7 +87,7 @@ $this->beginPage()
                     <?= $csrf->hiddenInput() ?>
                     <button type="submit">Logout</button>
                 </form>
-                <?= $currentUser->getIdentity()->user->getUsername() ?>
+                <?= Html::a($user->getUsername(), $urlGenerator->viewProfile($user->getId())) ?>
             <?php endif; ?>
         </div>
     </div>

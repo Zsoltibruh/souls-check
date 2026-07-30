@@ -30,4 +30,11 @@ return [
                 ->action(App\UseCase\Logout\Action::class)
                 ->name('logout'),
         ),
+
+    Group::create('/profile')
+        ->routes(
+            Route::get('/{id}')
+                ->action(App\UseCase\Profile\ViewProfile\Action::class)
+                ->name('view-profile')
+        )
 ];

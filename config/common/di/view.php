@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Presentation\Layout\Layout;
 use App\Shared\ApplicationParams;
+use App\Shared\Formatter;
 use App\Shared\UrlGenerator;
 use Yiisoft\Aliases\Aliases;
 use Yiisoft\Assets\AssetManager;
@@ -25,6 +26,7 @@ return [
                 'urlGenerator' => Reference::to(UrlGenerator::class),
                 'currentRoute' => Reference::to(CurrentRoute::class),
                 'currentUser' => Reference::to(CurrentUser::class),
+                'formatter' => Reference::to(Formatter::class),
             ]
         ]
     ],
