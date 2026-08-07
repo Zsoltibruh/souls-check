@@ -37,4 +37,24 @@ final readonly class UrlGenerator
     {
         return $this->generate('view-profile', ['id' => $id]);
     }
+
+    public function updateProfile(string $id): string
+    {
+        return $this->generate('update-profile', ['id' => $id]);
+    }
+
+    public function updateUsername(string $id): string
+    {
+        return $this->generate('update-username', ['id' => $id]);
+    }
+
+    public function updatePassword(string $id): string
+    {
+        return $this->generate('update-password', ['id' => $id]);
+    }
+
+    public function updateEmail(string $id): string
+    {
+        return $this->generate('update-email', ['id' => $id]);
+    }
 }

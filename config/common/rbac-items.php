@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Presentation\Access\Permission;
 use App\Presentation\Access\Role;
+use App\Presentation\Access\Rule\ProfileOwnerRule;
 use Yiisoft\Rbac\Permission as RbacPermission;
 use Yiisoft\Rbac\Role as RbacRole;
 
@@ -57,6 +58,7 @@ return [
     ],
     [
         'name' => Permission::MANAGE_OWN_PROFILE->value,
-        'type' => RbacPermission::TYPE_PERMISSION
+        'type' => RbacPermission::TYPE_PERMISSION,
+        'rule_name' => ProfileOwnerRule::class,
     ],
 ];

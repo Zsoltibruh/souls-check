@@ -13,6 +13,8 @@ use Yiisoft\Yii\View\Renderer\WebViewRenderer;
 
 final readonly class ResponseFactory implements ResponseFactoryInterface
 {
+    public const USER_NOT_FOUND = 'User not found';
+
     public function __construct(
         private ResponseFactoryInterface $responseFactory,
         private WebViewRenderer $viewRenderer,
@@ -31,6 +33,11 @@ final readonly class ResponseFactory implements ResponseFactoryInterface
             ->withHeader(Header::LOCATION, $url);
     }
 
+    public function redirectHtmx(string $url): ResponseInterface
+    {
+        return $this->createResponse()->withHeader('HX-Redirect', $url);
+    }
+
     public function notFound(string $title = 'Page not found', string $description = ''): ResponseInterface
     {
         return $this->viewRenderer
@@ -47,8 +54,13 @@ final readonly class ResponseFactory implements ResponseFactoryInterface
             ->withStatus(Status::FORBIDDEN);
     }
 
-    public function render(string $view, array $parameters, string $layout = Layout::MAIN): ResponseInterface
+    public function render(string $view, array $parameters = [], string $layout = Layout::MAIN): ResponseInterface
     {
         return $this->viewRenderer->withLayout($layout)->render($view, $parameters);
+    }
+
+    public function renderPartial(string $view, array $parameters = []): ResponseInterface
+    {
+        return $this->viewRenderer->withLayout(null)->render($view, $parameters);
     }
 }

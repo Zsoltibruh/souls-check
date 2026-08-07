@@ -37,18 +37,18 @@ final readonly class Action
         $form = new Form();
 
         if (!$this->formHydrator->populateFromPostAndValidate($form, $request)) {
-            return $this->renderForm($form, self::VIEW_PATH);
+            return $this->renderSingleForm($form, self::VIEW_PATH);
         }
 
         /** @var User|null $user */
         $user = User::query()->where(['username' => $form->username])->one();
 
         if (!$this->checkUser($form, $user)) {
-            return $this->renderForm($form, self::VIEW_PATH);
+            return $this->renderSingleForm($form, self::VIEW_PATH);
         }
 
         if (!$this->loginUser($form, $user)) {
-            return $this->renderForm($form, self::VIEW_PATH);
+            return $this->renderSingleForm($form, self::VIEW_PATH);
         }
 
         $response = $this->responseFactory->createResponse();

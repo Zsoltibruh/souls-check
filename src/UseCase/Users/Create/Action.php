@@ -38,11 +38,11 @@ final readonly class Action
         $form = new Form();
 
         if (!$this->formHydrator->populateFromPostAndValidate($form, $request)) {
-            return $this->renderForm($form, self::VIEW_PATH);
+            return $this->renderSingleForm($form, self::VIEW_PATH);
         }
 
         if (!$this->validateInputs($form)) {
-            return $this->renderForm($form, self::VIEW_PATH);
+            return $this->renderSingleForm($form, self::VIEW_PATH);
         }
 
         $this->createUser($form);
